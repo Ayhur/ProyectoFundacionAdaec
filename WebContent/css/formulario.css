@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%; 
+    height:100%; 
+}
+
+body { 
+    width: 100%;
+	height:100%;
+	/* Color del fondo de la pantalla */
+	background: #dbdbd2;
+}
+
+.explicacion {
+	margin-top: 25px;
+	margin-left: 20px;
+	font-weight: bold;
+}
+
+.campoFormulario {
+	font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px; 
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 25px;
+    background-color:#CF91F3;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: yellow;
+}
+
+.campoFormulario:hover {
+    border-width: 4px;
+    border-color: red;
+}
+
+.texto {
+	margin-top: 12px; /* Aqui indico la separación con respecto a la pregunta */
+	width: 75%; /* Aqui indico el ancho de las respuestas de tipo texto */
+}
+
+.radio {
+    margin-top: 12px; /* Aqui indico la separación con respecto a la pregunta */
+    margin-right: 4px; /* Aqui indico la separación con respecto a la siguiente respuesta posible */
+}
+
+.check {
+  	margin-top: 12px;  /* Aqui indico la separación con respecto a la pregunta */
+  	margin-right: 4px; /* Aqui indico la separación con respecto a la siguiente respuesta posible */
+}
+
+.submit {
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 42%;
+    margin-bottom: 10px;
+    padding: 10px;
+    font-size: 15px;
+    color: yellow;
+    text-align: center;
+    background-color: #0080ff;
+    border-radius: 15px;  
+}
+
+.submit:hover{
+	background-color: #c057e0;
+}
+
+form input[type="submit"] {
+  	border-radius: 6px;
+  	-moz-border-radius: 4px;
+  	-webkit-border-radius: 4px;
+  	background-color: #ea4c88;
+  	color: #eee;
+  	font-weight: bold;
+  	text-transform: uppercase;
+  	margin-left: 25%;
+  	margin-top: 2em;
+  	margin-bottom: 1em;
+  	padding: 1em;
+}

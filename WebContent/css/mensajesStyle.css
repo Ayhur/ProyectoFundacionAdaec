@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%; 
+    height:100%; 
+}
+
+body { 
+    width: 100%;
+	height:100%;
+	/* Color del fondo de la pantalla */
+	/*background: #dbdbd2;*/
+}
+
+span {
+	color: purple;
+	margin-top: 2em;
+	margin-left: 1em;
+}
+
+#4343{
+	
+	width: 100%;
+	height: 100%;
+	background-color: #3F30A3;
+	
+}
+
+#mensajeInfo{
+	width: 750px;
+  	margin: 14em auto;
+  	margin-left: 31em;
+}
+
+#mensajeInfo2{
+	width: 750px;
+  	margin: 14em auto;
+  	margin-left: 27em;
+}
+
+#mensajeP{
+	
+	font-size: 28px;
+}
