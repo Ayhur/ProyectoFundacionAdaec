@@ -24,8 +24,8 @@ public class PaisesDAOImpl extends GenericDAO implements PaisesDAO {
 			while (rs.next()) {
 
 				Pais p = new Pais();
-				p.setId(rs.getInt("id"));
-				p.setNombre(rs.getString("nombre"));
+				p.setId(rs.getInt("si14_id_pais"));
+				p.setNombre(rs.getString("si14_nombre"));
 				paises.add(p);
 				
 

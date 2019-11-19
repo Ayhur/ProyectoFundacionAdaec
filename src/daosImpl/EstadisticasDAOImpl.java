@@ -109,6 +109,7 @@ public class EstadisticasDAOImpl extends GenericDAO implements EstadisticasDAO {
 		for (String valorDistinto : valoresDistintosDeRespuesta) {
 			BarrasDiagrama barraDiagrama = new BarrasDiagrama();
 			barraDiagrama.setEtiquetasBarra(valorDistinto);
+			//Recogo el numero de respuesta iguales dadas en la pregunta a mostrar valores estadisticos
 			barraDiagrama.setValorEetiquetasBarra(cantidadDeRepuestasEspecificasEnUnaPregunta(idpregunta,
 					valorDistinto));
 			barraDiagrama.setValorColorFondoBarraYContorno(valoresColorBarras[cont]);

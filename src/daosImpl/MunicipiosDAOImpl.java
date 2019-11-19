@@ -13,6 +13,11 @@ import modelos.Municipios;
 
 public class MunicipiosDAOImpl extends GenericDAO implements MunicipiosDAO {
 
+	/**
+	 * Método que se encarga de listar los municipios pertenecientes a una comunidad.<br>
+	 * @param comunidad
+	 * @return
+	 */
 	@Override
 	public List<Municipios> listarMunicipios(int comunidad) {
 
@@ -26,10 +31,12 @@ public class MunicipiosDAOImpl extends GenericDAO implements MunicipiosDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-
 				Municipios municipio = new Municipios(rs.getInt("id"), rs.getString("municipio"));
 				municipios.add(municipio);
 			}
+			
+			rs.close();
+			ps.close();
 
 		} catch (SQLException e) {
 			System.out.println("Error al obtener los municipios en la SQL");

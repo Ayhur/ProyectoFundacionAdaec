@@ -7,33 +7,33 @@ import java.util.ArrayList;
 import java.util.List;
 
 import daos.ConstantesSQL;
-import modelos.RadioRespuesta;
 import daos.GenericDAO;
-import daos.RespuestasRadioDAO;
+import daos.RespuestasSliderDAO;
+import modelos.SliderRespuesta;
 
-public class RespuestasRadioDAOImpl extends GenericDAO implements RespuestasRadioDAO{
+public class RespuestasSliderDAOImpl extends GenericDAO implements RespuestasSliderDAO{
 
 	@Override
-	public void registrarRespuestas(List<RadioRespuesta> radioRespuestas, int idRegistroFormulario, ArrayList<Integer> erroresLog) {
+	public void registrarRespuestas(List<SliderRespuesta> sliderRespuestas, int idRegistroFormulario,
+			ArrayList<Integer> erroresLog) {
 		
 		conectar();
+		
+		//Preparo consulta para ir metiendo las respuestas
 		try {
-			//Preparo consulta para ir metiendo las respuestas
-			PreparedStatement ps = con.prepareStatement(ConstantesSQL.REGISTRAR_RESPUESTA_RADIO);
-			
-			System.out.println("Empezando a insertar las radioRespuestas");
-			
+			PreparedStatement ps = con.prepareStatement(ConstantesSQL.REGISTRAR_RESPUESTA_SLIDER);
+			System.out.println("Empezando a insertar las SliderRespuestas");
 			//Bucle para ir metiendo todas las respuestas de texto recogidas
-			for(int i=0;i<radioRespuestas.size();i++){
+			for(int i=0;i<sliderRespuestas.size();i++){
 				//Variable para sacar una respuesta de la lista de respuestas
-				RadioRespuesta radioRespuesta = new RadioRespuesta();
+				SliderRespuesta sliderRespuesta = new SliderRespuesta();
 				
 				//Saco de la lista 1 elemento
-				radioRespuesta = radioRespuestas.get(i);
+				sliderRespuesta = sliderRespuestas.get(i);
 				
 				//Relleno la consulta con los valores del elemento sacado
-				ps.setString(1, radioRespuesta.getRespuesta());
-				ps.setInt(2, radioRespuesta.getIdPregunta());
+				ps.setInt(1, sliderRespuesta.getRespuesta());
+				ps.setInt(2, sliderRespuesta.getIdpregunta());
 				//Ejecuto consulta
 				ps.execute();
 				
@@ -49,19 +49,21 @@ public class RespuestasRadioDAOImpl extends GenericDAO implements RespuestasRadi
 				insertar_NxN_Estadist_Radio(idRegistroFormulario, idGeneradoEnRadioRespuestas);
 				rs.close();
 			} // FIN BUCLE FOR
-			System.out.println("Preguntas radio insertadas");
 			ps.close();
+			System.out.println("Registradas todas las sliderRespuestas");
+			
+			
 			
 		} catch (SQLException e) {
 			System.out.println("Error al insertar las preguntas radio");
 			System.out.println(e.getMessage());
-			erroresLog.add(101);
+			erroresLog.add(105);
 		}
 		desconectar();
 	}
 	
 	/**
-	 * Método que registra en la base de datos la tabla de conexion NxN entre si06 y la correspondiente (en este caso radioRespuestas).<br>
+	 * Método que registra en la base de datos la tabla de conexion NxN correspondiente, entre la SI06 y la correspondiente (en este caso SI16).<br>
 	 * @param idRegistroFormulario
 	 * @param idGeneradoEnRadioRespuestas
 	 */
@@ -71,12 +73,12 @@ public class RespuestasRadioDAOImpl extends GenericDAO implements RespuestasRadi
 				"registro virtual: " + idRegistroFormulario + "  REGISTRO respuesta: " + idGeneradoEnRadioRespuestas);
 
 		try {
-			PreparedStatement ps = con.prepareStatement(ConstantesSQL.NxN_ESTAD_RADIO);
+			PreparedStatement ps = con.prepareStatement(ConstantesSQL.NxN_ESTAD_SLIDER);
 			ps.setInt(1, idRegistroFormulario);
 			ps.setInt(2, idGeneradoEnRadioRespuestas);
 			ps.execute();
 		} catch (SQLException e) {
-			System.out.println("Error al insertar en la NxN de estadist-radiorespuesta");
+			System.out.println("Error al insertar en la SI17 (NxN) de estadist-sliderrespuestas");
 			e.printStackTrace();
 		}
 	}

@@ -1,7 +1,8 @@
 package modelos;
 
-public class Preguntas {
+public class PreguntaRespuestasMaternidad {
 
+	// Atributos preguntas
 	private int idpregunta;
 	private String descripcion;
 	private int tipo;
@@ -12,63 +13,12 @@ public class Preguntas {
 	private int maxSlider;
 	private int bloque;
 
-	public Preguntas() {
-		this.nivel = 0;
-		this.cajaAdicional = false;
+	// Atributos respuestas
+	private Integer idRespuesta;
+	private String descripcionResp;
+
+	public PreguntaRespuestasMaternidad() {
 	}
-
-	public Preguntas(int idpregunta, String descripcion, int tipo) {
-		super();
-		this.idpregunta = idpregunta;
-		this.descripcion = descripcion;
-		this.tipo = tipo;
-		this.nivel = 0;
-	}
-
-	public Preguntas(String descripcion, int tipo, boolean cajaAdicional) {
-		super();
-		this.descripcion = descripcion;
-		this.tipo = tipo;
-		this.nivel = 0;
-		this.cajaAdicional = cajaAdicional;
-	}
-
-	public Preguntas(String descripcion, int tipo, int nivel) {
-		super();
-		this.descripcion = descripcion;
-		this.tipo = tipo;
-		this.nivel = nivel;
-	}
-
-	public Preguntas(String descripcion, int tipo, int nivel, int orden, boolean cajaAdicional) {
-		super();
-		this.descripcion = descripcion;
-		this.tipo = tipo;
-		this.orden = orden;
-		this.nivel = nivel;
-		this.cajaAdicional = cajaAdicional;
-
-	}
-
-	public Preguntas(String descripcion, int tipo, int nivel, int orden, boolean cajaAdicional, int bloquePregunta) {
-		super();
-		this.descripcion = descripcion;
-		this.tipo = tipo;
-		this.orden = orden;
-		this.nivel = nivel;
-		this.cajaAdicional = cajaAdicional;
-		this.bloque = bloquePregunta;
-
-	}
-//	public Preguntas(String descripcion, int tipo, int idPregunta, int orden) {
-//		super();
-//		this.descripcion = descripcion;
-//		this.tipo = tipo;
-//		this.idpregunta = idPregunta;
-//		this.orden = orden;
-//		this.nivel = 0;
-//		
-//	}
 
 	public int getIdpregunta() {
 		return idpregunta;
@@ -138,8 +88,24 @@ public class Preguntas {
 		return bloque;
 	}
 
-	public void setBloque(int i) {
-		this.bloque = i;
+	public void setBloque(int bloque) {
+		this.bloque = bloque;
+	}
+
+	public Integer getIdRespuesta() {
+		return idRespuesta;
+	}
+
+	public void setIdRespuesta(Integer idRespuesta) {
+		this.idRespuesta = idRespuesta;
+	}
+
+	public String getDescripcionResp() {
+		return descripcionResp;
+	}
+
+	public void setDescripcionResp(String descripcionResp) {
+		this.descripcionResp = descripcionResp;
 	}
 
 	@Override
@@ -149,6 +115,8 @@ public class Preguntas {
 		result = prime * result + bloque;
 		result = prime * result + (cajaAdicional ? 1231 : 1237);
 		result = prime * result + ((descripcion == null) ? 0 : descripcion.hashCode());
+		result = prime * result + ((descripcionResp == null) ? 0 : descripcionResp.hashCode());
+		result = prime * result + ((idRespuesta == null) ? 0 : idRespuesta.hashCode());
 		result = prime * result + idpregunta;
 		result = prime * result + maxSlider;
 		result = prime * result + minSlider;
@@ -166,7 +134,7 @@ public class Preguntas {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Preguntas other = (Preguntas) obj;
+		PreguntaRespuestasMaternidad other = (PreguntaRespuestasMaternidad) obj;
 		if (bloque != other.bloque)
 			return false;
 		if (cajaAdicional != other.cajaAdicional)
@@ -175,6 +143,16 @@ public class Preguntas {
 			if (other.descripcion != null)
 				return false;
 		} else if (!descripcion.equals(other.descripcion))
+			return false;
+		if (descripcionResp == null) {
+			if (other.descripcionResp != null)
+				return false;
+		} else if (!descripcionResp.equals(other.descripcionResp))
+			return false;
+		if (idRespuesta == null) {
+			if (other.idRespuesta != null)
+				return false;
+		} else if (!idRespuesta.equals(other.idRespuesta))
 			return false;
 		if (idpregunta != other.idpregunta)
 			return false;
@@ -193,9 +171,10 @@ public class Preguntas {
 
 	@Override
 	public String toString() {
-		return "Preguntas [idpregunta=" + idpregunta + ", descripcion=" + descripcion + ", tipo=" + tipo + ", nivel="
-				+ nivel + ", orden=" + orden + ", cajaAdicional=" + cajaAdicional + ", minSlider=" + minSlider
-				+ ", maxSlider=" + maxSlider + ", bloque=" + bloque + "]";
+		return "PreguntaRespuestasMaternidad [idpregunta=" + idpregunta + ", descripcion=" + descripcion + ", tipo="
+				+ tipo + ", nivel=" + nivel + ", orden=" + orden + ", cajaAdicional=" + cajaAdicional + ", minSlider="
+				+ minSlider + ", maxSlider=" + maxSlider + ", bloque=" + bloque + ", idRespuesta=" + idRespuesta
+				+ ", descripcionResp=" + descripcionResp + "]";
 	}
 
 }

@@ -9,27 +9,29 @@ import java.util.List;
 import daos.ComunidadesAutonomasDAO;
 import daos.ConstantesSQL;
 import daos.GenericDAO;
+import daos.PronvinciasDAO;
 import modelos.ComunidadesAutonomas;
+import modelos.Provincia;
 
-public class ComunidadesAutonomasDAOImpl extends GenericDAO implements ComunidadesAutonomasDAO {
-
+public class ProvinciasDAOImpl extends GenericDAO implements PronvinciasDAO {
+	
 	/**
 	 * Método que se encarga de listar las comunidades en función del pais.<br>
 	 * @param pais
 	 * @return
 	 */
 	@Override
-	public List<ComunidadesAutonomas> listarComunidades(int pais) {
+	public List<Provincia> listarProvincias(int pais) {
 
 		conectar();
-		List<ComunidadesAutonomas> comunidades = new ArrayList<ComunidadesAutonomas>();
+		List<Provincia> comunidades = new ArrayList<Provincia>();
 
 		try {
 			PreparedStatement ps = con.prepareStatement(ConstantesSQL.LISTAR_COMUNIDADES);
 			ps.setInt(1, pais);
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				ComunidadesAutonomas comunidad = new ComunidadesAutonomas(rs.getInt("id"), rs.getString("comunidad"));
+				Provincia comunidad = new Provincia(rs.getInt("id"), rs.getString("provincia"));
 				comunidades.add(comunidad);
 			}
 
@@ -45,4 +47,6 @@ public class ComunidadesAutonomasDAOImpl extends GenericDAO implements Comunidad
 
 		return comunidades;
 	}
+	
+	
 }
