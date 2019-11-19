@@ -23,7 +23,13 @@ public abstract class GenericDAO {
 
 	protected void conectar() {
 		try {
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/endometriosis", "root", "12345");
+//			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/endometriosis", "root", "12345");
+//			Properties properties = new Properties();
+//			properties.setProperty("user", "root");
+//			properties.setProperty("password", "");
+//			properties.setProperty("useSSL", "false");
+//			properties.setProperty("autoReconnect", "false");
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/endometriosis?autoReconnect=true&useSSL=false", "root", "12345");
 		} catch (SQLException e) {
 			System.out.println("Error al conectar con el servidor");
 			e.printStackTrace();

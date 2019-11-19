@@ -2,14 +2,14 @@ package daos;
 
 import java.util.List;
 
-import modelos.ComunidadesAutonomas;
+import modelos.Provincia;
 
-public interface ComunidadesAutonomasDAO {
+public interface PronvinciasDAO {
 	
 	/**
 	 * Método que se encarga de listar las comunidades en función del pais.<br>
 	 * @param pais
 	 * @return
 	 */
-	List <ComunidadesAutonomas> listarComunidades(int pais);
+	List <Provincia> listarProvincias(int pais);
 }
