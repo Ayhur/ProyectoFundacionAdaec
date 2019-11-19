@@ -13,6 +13,8 @@
 			<span><p id="mensajeP">La pregunta se ha borrado correctamente<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Redireccionando...</p></span>
 		</div>
 		<meta http-equiv="refresh" content="4; url=endometriosis.jsp">	
+		
+	<button id="botonVolver" onclick="location.href='endometriosis.jsp'">Volver</button>
 
 </body>
 </html>

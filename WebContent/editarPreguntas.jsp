@@ -4,16 +4,18 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Estadisticas, informacion</title>
+   		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    	<link rel="stylesheet" href="css/registroPreguntaStyle.css">
+        <title>Edición preguntas</title>
     </head>
     <body>
         
-        <div>
+        <!-- INICIO DIV principal -->
+        <div class="formularioRegistroPregunta">
             Sobre que pregunta desea realizar la consulta:
               <!--                     SELECTOR DE PAISES             -->
                 <br/>
-                <form action="#" method="post">
+                <form action="ServletEditarPreguntas" method="post">
                     <select name="selectPregunta" id="selectPregunta">
                     <option class="option" value="-1">---</option>
                     <c:forEach items="${preguntas}" var="pregunta">
@@ -21,11 +23,13 @@
                     </c:forEach>
                     </select><br/>
                     
-                    <a href ="ServletEditarPreguntas?idpregunta=${pregunta.idpregunta}" 
-                    onclick="return editarPregunta()">EDITAR</a>
+                    <input type="submit" id="botonRegistrarPregunta" value="Editar pregunta">
+<%--                     <a href ="ServletEditarPreguntas?idpregunta=${pregunta.idpregunta}"  --%>
+<!--                     onclick="return editarPregunta()">EDITAR</a> -->
                 </form>
-                
-        </div>    
+        	<button id="botonVolver" onclick="location.href='endometriosis.jsp'">Volver</button>
+        </div>
+        <!-- FIN DIV principal -->
     
     <script type="text/javascript">
     function editarPregunta(){

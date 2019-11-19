@@ -17,33 +17,29 @@
 	
 		
 		      <!-- VALIDACIONES POR CARLOS -->
-				<div style="color:red">&nbsp;${mensajenombre}</div>
-				<div style="color:red">&nbsp;${mensajeapellido}</div>
-				<div style="color:red">&nbsp;${mensajefechanacimiento}</div>
+<!-- 		  @Ayhur: Voy a comentar ciertos campos por temas de estilo y obsolescencia (required evita que ciertas validaciones sean necesarias) -->
+<%-- 				<div style="color:red">&nbsp;${mensajenombre}</div> --%>
+<%-- 				<div style="color:red">&nbsp;${mensajeapellido}</div> --%>
+<%-- 				<div style="color:red">&nbsp;${mensajefechanacimiento}</div> --%>
 				<div style="color:red">&nbsp;${mensajeemail}</div>
 				<div style="color:red">&nbsp;${mensajeusuario}</div>
 				<div style="color:red">&nbsp;${mensajepassword}</div>
 				<div style="color:red">&nbsp;${mensajeconconrdancia}</div>
 			  <!--  FIN VALIDACIONES CARLOS -->
-<!-- 			  <div> -->
-<!-- 			  		<p>hola</p> -->
-<!-- 					 <img src="D:\ENDOMETRIOSIS - proyecto - web  todo\workspace\zProyectoEverisFinV0003\WebContent\img\fleha.png"> -->
-<!-- 			 </div> -->
 			  
-<!-- 			 <a href="login.jsp"><img src="img/login.png" width='1200' alt=''></a> -->
 		      
 	        <form action="ServletRegistroUsuario"	 method="post">
 	
 	          <fieldset class="clearfix">
 				
-	            <label id="label">Nombre:</label>
+	            <label class="label">Nombre:</label>
 	            <input type="text" name="campoNombre" required>
 	            
 	            <label id="labelSegundoCampo">Apellidos:</label>
 	            <input type="text" name="campoApellidos" required>
 	            <br/>
 	            
-	            <label id="label">Fecha de nacimiento:</label>
+	            <label class="label">Fecha de nacimiento:</label>
 	            <input id="campofecha" type="date" name="campoFechaNacimiento" required> 
 	            
 	            <label id="labelSegundoCampo">DNI:</label>
@@ -51,7 +47,7 @@
 	            <br/>
 	            
 	            <!-- 					SELECTOR DE PAISES			 -->
-	            <label id="label">Pais:</label>
+	            <label class="label">Pais:</label>
 	            <select name="selectPais" id="selectPais" onChange="mostrarComunidad();">
 	            	<option class="option" value="-1">---</option>
 	            	<c:forEach items="${paises}" var="pais">
@@ -60,40 +56,44 @@
 	            </select>
 	            <!-- 						FIN PAISES			 -->
 	            
-	            <!-- 					SELECTOR DE COMUNIDADES			 -->
+	            <!-- 					SELECTOR DE PROVINCIAS			 -->
 	            <div id='comunidades'>            	
-	            	<label id="label">Comunidad Autónoma:</label>
+	            	<label class="label">Provincia:</label>
 		            <select name="selectcomunidades" id="selectcomunidades" onChange="mostrarMunicipios();" >
 		            	<option class="option" value="-1">------</option>
 		            </select>
 	            </div>
-	            <!-- 						FIN COMUNIDADES			 -->
+	            <!-- 						FIN PROVINCIAS			 -->
 	            
 	            <!-- 					SELECTOR DE MUNICIPIOS			 -->
 	            <div id='municipios'>	
-		            <label id="label">Municipio:</label>
+		            <label class="label">Municipio:</label>
 		            <select name="selectMunicipios" id="selectMunicipios">
 		          	  <option class="option" value="-1">------</option>
 		            </select>
 	            </div>
 	             <!-- 						FIN MUNICIPIOS			 -->
 	            
-	            <label id="label">Email:</label>
+	            <label class="label">Email:</label>
 	            <input type="email" name="campoEmail" required>
 	           	<br>
 	           	
-	            <label id="label">Usuario:</label>
+	            <label class="label">Usuario:</label>
 	            <input type="text" name="campoUsuario" required>
 	            <br/>
 	            
-	            <label id="label">Contraseña:</label>
+	            <label class="label">Contraseña:</label>
 	            <input type="password" name="campoPassword" required>
 	             <br/>
 	           
-			    <label id="label">Repita la contraseña:</label>
+			    <label class="label">Repita la contraseña:</label>
 	            <input type="password" name="campoRepetirPassword" required>
-	           
-				<input type="submit" value="Registrarse">
+	             <br/>
+	           	
+	           	<input type="checkbox" name="aceptar_terminos" id="aceptar_terminos" value="aceptar_terminos" required /> 
+	           	<label id="terminoslbl">He leído y acepto la <a href="#" target="_blank">Política de Privacidad</a></label>
+	           	 <br/>
+				<input type="submit" id="btnEnviar" value="Registrarse" disabled>
 	
 	          </fieldset>
 	

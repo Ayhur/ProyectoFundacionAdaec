@@ -23,17 +23,22 @@ body {
 }
 
 .campoFormulario {
+/* 	height:10%; */
 	font-weight: bold;
     margin-top: 40px;
     margin-bottom: 20px; 
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+/*     margin-left: 10px; */
+/*     margin-right: 10px; */
     padding: 25px;
     background-color:#CF91F3;
     border-radius: 15px;
     border-style: solid;
     border-width: 2px;
     border-color: yellow;
+    display : flex;
+    width: 100%;
 }
 
 .campoFormulario:hover {
@@ -86,3 +91,30 @@ form input[type="submit"] {
   	margin-bottom: 1em;
   	padding: 1em;
 }
+
+
+
+table {
+   border: 1px solid #000;
+}
+th, td {
+   width: 25%;
+   text-align: left;
+   vertical-align: top;
+   border: 1px solid #000;
+}
+
+.cajaRespuesta{
+	width: 25%;
+	float: left;
+	margin-bottom: 0.5em;
+}
+
+.cajaEnunciadoPregunta{
+	margin-bottom: 1em;
+	width: 100%;
+}
+/* .cajaGlobalRespuestas{ */
+/* 	    display : flex; */
+/* 	    min-width: 25%; */
+/* } */

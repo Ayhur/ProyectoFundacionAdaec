@@ -1,17 +1,17 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 html {
-    width: 100%; 
-    height:100%; 
+	width: 100%;
+	height: 100%;
 }
 
-body { 
-    width: 100%;
-	height:100%;
+body {
+	width: 100%;
+	height: 100%;
 	/* Color del fondo de la pantalla */
 	background: #dbdbd2;
 }
@@ -30,130 +30,199 @@ h1 {
 }
 
 .formularioRegistroPregunta form label {
-  	height: 35px;
-  	margin-right: 1em;
+	height: 35px;
+	margin-right: 1em;
 }
 
 .formularioRegistroPregunta form input[type="text"] {
 	height: 35px;
 	background-color: #3b4148;
-  	border-radius: 4px;
-  	color: #E6D0CB;
-  	margin-top: 10px;
-  	padding: 10px;
-  	width: 230px;
-  	border-style: solid;
-  	border-color: white;
-  	border-width: 2px;
+	border-radius: 4px;
+	color: #E6D0CB;
+	margin-top: 10px;
+	padding: 10px;
+	width: 230px;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
 }
 
 .formularioRegistroPregunta form input[type="radio"] {
-  	margin-right: 5px;
+	margin-left: 10px;
 }
 
 .formularioRegistroPregunta form input[type="submit"] {
-  	border-radius: 6px;	
-  	-moz-border-radius: 4px;
-  	-webkit-border-radius: 4px;
-  	background-color: #ea4c88;
-  	color: #eee;
-  	font-weight: bold;
-  	text-transform: uppercase;
-  	/*margin-left: 25%;*/
-  	margin-right: 15%;
-  	margin-top: 2em;
-  	margin-bottom: 1em;
-  	padding: 1em;
+	border-radius: 6px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+	text-transform: uppercase;
+	/*margin-left: 25%;*/
+	margin-right: 15%;
+	margin-top: 2em;
+	margin-bottom: 1em;
+	padding: 1em;
+}
+
+.formularioRegistroPregunta form input[type="button"] {
+	border-radius: 6px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+	text-transform: uppercase;
+	/*margin-left: 25%;*/
+	/*   	margin-right: 15%; */
+	/*   	margin-top: 0.5em; */
+	/*   	margin-bottom: 0.5em; */
+	padding-top: 0.1em;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+	padding-bottom: 0.1em;
+}
+
+/* boton menos */
+#eliminame {
+	border-radius: 6px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-top: 0.1em;
+	padding-left: 0.4em;
+	padding-right: 0.4em;
+	padding-bottom: 0.1em;
+	margin-left: 5px;
 }
 
 .formularioRegistroPregunta form input[type="submit"]:hover {
-  	background-color: #d44179;
+	background-color: #d44179;
 }
 /****************************/
-
-#botonVolver{
-	
-	border-radius: 6px;	
-  	-moz-border-radius: 4px;
-  	-webkit-border-radius: 4px;
-  	background-color: #ea4c88;
-  	color: #eee;
-  	font-weight: bold;
-  	text-transform: uppercase;
-  	/*margin-left: 25%;*/
-  	margin-right: 15%;
-  	margin-top: 2em;
-  	margin-bottom: 1em;
-  	padding: 1em;
-	
-	
+#botonVolver {
+	border-radius: 6px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+	text-transform: uppercase;
+	/*margin-left: 25%;*/
+	margin-right: 15%;
+	margin-top: 2em;
+	margin-bottom: 1em;
+	padding: 1em;
 }
 
- .boton_personalizado{
-    text-decoration: none;
-    padding: 10px;
-    font-weight: 600;
-    font-size: 20px;
-    color: #ffffff;
-    background-color: #1883ba;
-    border-radius: 6px;
-    border: 2px solid #0016b0;
-  }
-  .boton_personalizado:hover{
-    color: #1883ba;
-    background-color: #ffffff;
-  }
+.boton_personalizado {
+	text-decoration: none;
+	padding: 10px;
+	font-weight: 600;
+	font-size: 20px;
+	color: #ffffff;
+	background-color: #1883ba;
+	border-radius: 6px;
+	border: 2px solid #0016b0;
+}
 
+.boton_personalizado:hover {
+	color: #1883ba;
+	background-color: #ffffff;
+}
 
 /****************************/
-
-
 .formularioRegistroPregunta2 {
 	margin-top: 4em;
 	margin-left: 28em;
 }
 
 .formularioRegistroPregunta2 form label {
-  	height: 35px;
-  	margin-right: 1em;
+	height: 35px;
+	margin-right: 1em;
 }
 
 .formularioRegistroPregunta2 form input[type="text"] {
 	height: 35px;
 	background-color: #3b4148;
-  	border-radius: 4px;
-  	color: #E6D0CB;
-  	margin-top: 10px;
-  	padding: 10px;
-  	width: 230px;
-  	border-style: solid;
-  	border-color: white;
-  	border-width: 2px;
+	border-radius: 4px;
+	color: #E6D0CB;
+	margin-top: 10px;
+	padding: 10px;
+	width: 230px;
+	border-style: solid;
+	border-color: white;
+	border-width: 2px;
 }
 
 .formularioRegistroPregunta2 form input[type="radio"] {
-  	margin-right: 5px;
+	margin-right: 15px;
 }
 
 .formularioRegistroPregunta2 form input[type="submit"] {
-  	border-radius: 6px;
-  	-moz-border-radius: 4px;
-  	-webkit-border-radius: 4px;
-  	background-color: #ea4c88;
-  	color: #eee;
-  	font-weight: bold;
-  	text-transform: uppercase;
-  	/*margin-left: 18%;*/
-  	margin-top: 2em;
-  	margin-bottom: 1em;
-  	padding: 1em;
+	border-radius: 6px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	background-color: #ea4c88;
+	color: #eee;
+	font-weight: bold;
+	text-transform: uppercase;
+	/*margin-left: 18%;*/
+	margin-top: 2em;
+	margin-bottom: 1em;
+	padding: 1em;
 }
 
 .formularioRegistroPregunta2 form input[type="submit"]:hover {
-  	background-color: #d44179;
+	background-color: #d44179;
+}
+
+#contenedorRespuestasAgregar {
+	/* 	width: 550px; */
+	display: inline;
 }
 
 
+#contenedorDependencia {
+	margin-top: 2em;
 
+	/* 	background-color: #984c88; */
+}
 
+.contenedorModelo1 {
+	margin-top: 2em;
+}
 
+#dependenciasPreguntas {
+	margin-top: 1em;
+	display: none;
+	/* 	background-color: #124c88; */
+}
+
+#contenedorFilaRespuestas {
+	margin-top: 1em;
+}
+
+.contenedorFilaElementos {
+	margin-top: 1em;
+}
+
+#contenidoRespuestas {
+	display: none;
+}
+
+#contenidoRangosSlider {
+	display: none;
+}
+
+#ordenPreguntas {
+	display: none;
+}
+
+#bloquePreguntas {
+	display: none;
+}

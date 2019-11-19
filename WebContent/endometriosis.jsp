@@ -8,65 +8,55 @@
 		<title>Endometriosis</title>
 		<link rel="stylesheet" href="css/menu.css">
 	</head>
+	
 	<body>
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	<c:if test="${sessionScope.idUser != null}">
-<%-- 		Bienvenido: ${sessionScope.idUser} <br/> --%>
+	<!-- INICIO IGAMARTI [14-14-2018]- Si se logea un usuario se carga la pantalla de presentación del formulario o en su defecto si 
+					ya realizó el formulario se carga una pantalla de agradecimiento  -->
+	<c:if test="${null != sessionScope.user.id}">
+		<c:if test="${null != sessionScope.user.realizado && sessionScope.user.realizado == 0}">		
+			<div id="divUserInfo">
+				<h3>INFORMACION:</h3>
+				El siguiente formulario que usted va a rellenar ayudará a <br/>futuras investigaciones.<br/><br/>
+				
+				Todos los datos que rellene del formulario serán almacenados <br/>en una base de datos. <br/><br/>
+				
+				El formulario es anónimo. En ningun momento del proceso <br/>se vincula los datos registrados 
+				con el usuario que se encuentra<br/> conectado en ese momento. <br/><br/>
+				
+				Gracias por su ayuda.<br/>			
+			</div>			
+			<div>				
+				<nav id="navUser">
+					<ul class="dropdown">
+			        	<li><a href="ServletCreaFormulario">FORMULARIO</a></li>			        	
+			        	<li><a href="ServletLogOut">SALIR</a></li>			        	
+			        </ul>
+				</nav> 			
+			</div>
+		</c:if>
 		
-		<div id="divUserInfo">
-			<h3>INFORMACION:</h3>
-			El siguiente formulario que usted va a rellenar ayudará a <br/>futuras investigaciones.<br/><br/>
-			
-			Todos los datos que rellene del formulario serán almacenados <br/>en una base de datos. <br/><br/>
-			
-			El formulario es anónimo. En ningun momento del proceso <br/>se vincula los datos registrados 
-			con el usuario que se encuentra<br/> conectado en ese momento. <br/><br/>
-			
-			Gracias por su ayuda.<br/>
-		
-		</div>
-		
-		<div>
-			
-			<nav id="navUser">
-				<ul class="dropdown">
-				        	<li><a href="ServletCreaFormulario">FORMULARIO</a>
-				        	</li>
-				        	<li><a href="ServletLogOut">SALIR</a>
-				        	</li>
-				        </ul>
-				</nav> 
-			
-			
-		
-		</div>
-<!-- 		<!--Para ir al formulario --> 
-<!-- 		<a href="ServletCreaFormulario">IR AL FORMULARIO</a> -->
-<!-- 		<a href="ServletLogOut">SALIR</a>&nbsp; -->
-		
-		
-		
+		<c:if test="${null !=sessionScope.user.realizado && sessionScope.user.realizado == 1}">
+			<div id="divUserInfo">
+				<h3>¡MUCHAS GRACIAS!</h3>
+				Ya rellenó el formulario. Le estamos muy agradecidos por su tiempo <br/> y su inestimable ayuda en futuras investigaciones.<br/><br/>
+				
+				Para más información revise la página de la asociación. <br/><br/>
+				
+				Gracias por su ayuda.<br/>			
+			</div>
+			<div>				
+				<nav id="navUser">
+					<ul class="dropdown">
+			        	<li><a href="ServletLogOut">SALIR</a></li>			        	
+			        </ul>
+				</nav> 			
+			</div>					
+		</c:if>
 	</c:if>
+	<!-- FIN IGAMARTI [14-14-2018] -->		
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<c:if test="${sessionScope.idUserAdmin != null}">
+	<c:if test="${sessionScope.idUserAdmin == 0}">
 <%--  		Bienvenido ADMINISTRADOR: ${sessionScope.idUser} <br/>  --%>
 <!-- 		<!-- Registrar editar borrar nuevas preguntas redirecciones -->
 <!-- 		<a href="registrarPreguntaRespuesta.jsp">REGISTRAR PREGUNTA/RESPUESTA</a><br/> -->
@@ -106,18 +96,14 @@
 <!-- </nav> -->
 <!-- FIN RAFA CODIGO -->
 
-
-
-
-
-
 <nav>
 <ul class="dropdown">
         	<li class="drop"><a href="#">FORMULARIO</a>
         		<ul class="sub_menu">
-							<li><a href="registrarPreguntaRespuesta.jsp">Crear Pregunta</a></li>
+							<li><a href="ServletCargaDatosPreviaRegistrarPreguntaRespuesta">Crear Pregunta</a></li>
 							<li><a href="ServletCargaDeDatosPreviaParaEditarPregunta">Editar Pregunta</a></li>
 							<li><a href="ServletCargaDeDatosPreviaParaBorrarPregunta">Borrar Pregunta</a></li>
+							<li><a href="ServletCargaDeDatosMedicamentos">Medicacion</a></li>
         		</ul>
         	</li>
         	<li class="drop"><a href="#">ESTADISTICAS</a>
@@ -130,13 +116,11 @@
         </ul>
 </nav> 
 
-
-
-
-
 	</c:if>
 	
+	<!-- IMPORT JQUERY -->
 	<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+	<!-- IMPORT JS -->
 	<script src="./js/menu.js"></script>
 		<!-- Queda pendiente mostrar por aquÃ­ mensaje de formulario realizado-->
 		<!-- Variable setAttribute mensajeFormSubido en servletRecogidaDatos-->

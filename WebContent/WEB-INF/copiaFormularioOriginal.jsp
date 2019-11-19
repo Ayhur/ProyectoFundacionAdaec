@@ -42,10 +42,7 @@
 					//Voy sacando pregunta y su respectiva respuesta
 					Preguntas pregunta = (Preguntas)listaPreguntas.get(i);
 					//Muestro pregunta
-					out.println("<div class='cajaEnunciadoPregunta'>");
-					out.println(pregunta.getDescripcion());
-// 					out.println(pregunta.getDescripcion() + "<br/>");
-					out.println("</div>");
+					out.println(pregunta.getDescripcion() + "<br/>");
 					
 					//Si el tipo de pregunta es 1 (texto)
 					if(pregunta.getTipo() == 1) {
@@ -68,20 +65,12 @@
 								
 						    	//Imprimo cada respuesta
 						    	for(int j=0;j<respuestasRadio.length;j++){
-						    		//Genero una caja para la respuesta
-						    		out.println("<div class='cajaRespuesta'>");
-// 						    		out.println("<input type='radio' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "' id=rad"+i+"_"+j+" value='" + respuestasRadio[j] + "'> " + respuestasRadio[j] + "&nbsp;&nbsp;&nbsp;");
-						    		out.println("<input type='radio' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "' id=rad"+i+"_"+j+" value='" + respuestasRadio[j] + "'> " + respuestasRadio[j]);
-						    		
-						    		//cierro caja de respuesta
-							    	out.println("</div>");
+						    		out.println("<input type='radio' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "' id=rad"+i+"_"+j+" value='" + respuestasRadio[j] + "'> " + respuestasRadio[j] + "&nbsp;&nbsp;&nbsp;");
 						    	}
 						    	
 						    	// Si la pregunta tenía la opción adicional activada le agregamos al final una caja de texto
 								if (true == pregunta.isCajaAdicional()) {
-									out.println("<div class='cajaRespuesta'>");
 									out.println("<input type='text' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "_at" + "'><br/>");
-									out.println("</div>");
 								}
 						    	
 						    	//cierro caja de pregunta forumario
@@ -94,7 +83,7 @@
 					} 
 			    	//Si es pregunta de tipo 3 (check)					
 					else if (pregunta.getTipo() == 3) {	
-						out.println("<div class='cajaGlobalRespuestas'>");
+						
 						//Siendo pregunta 3 se que hay respuesta. La saco
 						for(Respuestaspreguntas respuesta : listaRespuestas) {
 							if (null != respuesta && (respuesta.getIdPregunta() == pregunta.getIdpregunta())) {
@@ -104,20 +93,15 @@
 								
 						    	//Imprimo cada respuesta
 						    	for(int j=0;j<respuestasCheck.length;j++){
-						    		out.println("<div class='cajaRespuesta'>");
 						    		out.println("<input type='checkbox' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "_" + (j) + "'  id=chk"+i+"_"+j+" value='" + respuestasCheck[j] + "'> " + respuestasCheck[j] + "&nbsp;&nbsp;&nbsp;");
-						    		out.println("</div>");
 						    	}
 						    	
 						    	// Si la pregunta tenía la opción adicional activada le agregamos al final una caja de texto
 								if (true == pregunta.isCajaAdicional()) {
-									out.println("<div class='cajaRespuesta'>");
 									out.println("<input type='text' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "'><br/>");
-									out.println("</div>");
 								}
 								
 						    	//cierro caja de pregunta forumario
-						    	out.println("</div>");
 						    	out.println("</div>");
 						    	
 						    	//poner un break para una vez localizado salga de bucle
@@ -131,19 +115,16 @@
 						for(Respuestaspreguntas respuesta : listaRespuestas) {
 							if (null != respuesta && (respuesta.getIdPregunta() == pregunta.getIdpregunta())) {
 								
-								out.println("<div class='cajaRespuesta'>");
-								
 								//Guardo en un array las respuestas
 						    	String[] respuestasSlider = respuesta.getDescripcion().split("-");
 								// Generamos el slider con los valores
 								out.println("<input type='range' name='" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "' min='"+respuestasSlider[0]+"' max='"+respuestasSlider[1]+"' value='"+respuestasSlider[0]+"' oninput='this.form.amount_" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + ".value=this.value'/>");
-								out.println("</div>");
+								
 								/** Debido a que el name empieza por numero, provoca que el boton del number no localize el name porque no se puede inicializar en los metodos html por numeros, tiene que ser letras,
 								si le pones una 'a' delante tanto en el name de arriba como en la referencia vinculante de abajo despues de oninput funcionaria, entonces abria que cambiarlo todo
 								para futuros parches hacerlo*/
-								out.println("<div class='cajaRespuesta'>");
+								
 								out.println("<input type='number' name='amount_" + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + "' min='"+respuestasSlider[0]+"' max='"+respuestasSlider[1]+"' oninput='this.form." + pregunta.getTipo() + "_" + pregunta.getIdpregunta() + ".value=this.value'/>");
-								out.println("</div>");
 								//cierro caja de pregunta forumario
 					    		out.println("</div>");
 							}
@@ -199,7 +180,7 @@
 			        var elementoHTML = this.tagName+'#'+this.id;
 			        
 			        // Si la respuesta del radiobutton es 'Si' enviamos por ajax su name que contiene el ID
-			        if ('SI'.toUpperCase() === this.value.toUpperCase()) {
+			        if ('SI'.toUpperCase() === this.value.toUpperCase()){
 			        	$.ajax({
 							type: "post",
 							dataType : "json",
@@ -230,26 +211,36 @@
 									var padrejq = '#'+padre;
 									
 									
+									
 									// PRUEBA LOCALIZAR PREGUNTA MADRE
 									txt = document.getElementById(padre);
-									if(txt.innerHTML.search("¿has podido ser mamá?") !== -1){
+									if(txt.innerHTML.search("¿Eres madre?") !== -1){
 										console.log("He localizado la pregunta eres madre");
 										// INICIO insercción bloque de preguntas de maternidad
 										
 										inserccionBloqueMaternidad(json, padrejq);
 										
 										// FIN insercción bloque
+										
+										
+										
+										
+										
 									}
 									//FIN PRUEBA LOCALIZAR PREGUNTA MADRE
 									
 									
 									// inserto despues del elemento HTML padre
 									else if(1 === json.tipo){ // tipo text
-										$(padrejq).after("<div class='campoFormulario' id='cajaDependeciaPregunta"+json.idpregunta+"'>"+json.descripcion+"<br/><input type='text' name='" + json.tipo + "_" + json.idpregunta + "'><br/></div>");
+										$(padrejq).after("<div class='campoFormulario' id='cajaDependeciaPregunta"+json.idpregunta+"'>"+json.descripcion+"<br/><input type='text' name='" + json.tipo + "_" + json.id + "'><br/></div>");
 									}
 									else if(2 === json.tipo){ // tipo radio
 										
 										var respuestas = json.descripcionRespuestas.split("-");
+										
+//	 									for (var respuesta in respuestas) {
+//	 									    console.log(respuestas[respuesta]);
+//	 									}
 										
 										// Agrega la nueva pregunta dentro de su caja correspondiente
 										$(padrejq).after("<div class='campoFormulario' id='cajaDependeciaPregunta"+json.idpregunta+"'>"+json.descripcion+"<br/></div>");
@@ -260,12 +251,6 @@
 										// Agrego las respuestas
 										for (var respuesta in respuestas) {
 										   $(preguntaNueva).append("<input type='radio' name='" + json.tipo + "_" + json.idpregunta + " value='"+respuesta+"'>"+respuestas[respuesta]);
-										}
-										
-										// Si la pregunta tenía la opción adicional activada le agregamos al final una caja de texto
-										if (true == json.cajaAdicional) {
-											$(preguntaNueva).append("<label>Otro (Rellene):</label>");
-											$(preguntaNueva).append("<input type='text' name='" + json.tipo + "_" + json.idpregunta + "'><br/>");
 										}
 										
 									}
@@ -283,24 +268,16 @@
 										for (var respuesta in respuestas) {
 										   $(preguntaNueva).append("<input type='checkbox' name='" + json.tipo + "_" + json.idpregunta + " value='"+respuesta+"'>"+respuestas[respuesta]);
 										}
-										
-										// Si la pregunta tenía la opción adicional activada le agregamos al final una caja de texto
-										if (true == json.cajaAdicional) {
-											$(preguntaNueva).append("<label>Otro (Rellene):</label>");
-											$(preguntaNueva).append("<input type='text' name='" + json.tipo + "_" + json.idpregunta + "'><br/>");
-										}
-										
-										
 									}
 									else{
 										console.log("Es imposible llegar aqui sin hackear la pagina o no se ha traido informado json correctamente porque el json2 del codigo venia vacio");
 									}
 								} // end IF elemento no existe 
 								
-							} //end success
-						}); //end ajax
+							}// end success
+						});// end ajax
 			        
-			        } //end IF respuesta SI
+			        }// end IF respuesta SI
 			        else if ('NO' === this.value.toUpperCase()){
 			        	$.ajax({
 							type: "post",
@@ -311,35 +288,22 @@
 							},
 							success : function(json) {
 								
-								console.log("esto es josnlenght: "+json.length);
+								// elimino el elemento
+								var elementoHTML = "#cajaDependeciaPregunta"+json.idpregunta;
+								$(elementoHTML).remove();
 								
-								if(undefined === json.length){
-									console.log("json trae 1 elemento");
-									// elimino el elemento
-									var elementoHTML = "#cajaDependeciaPregunta"+json.idpregunta;
-									$(elementoHTML).remove();
-								}
-								else{
-									console.log("json trae mas de 1 elemento");
-									// elimino los elementos
-									json.forEach(elemento => {
-										var elementoHTML = "#cajaDependeciaPregunta"+elemento.idpregunta;
-										$(elementoHTML).remove();
-									}); // fin bucle forEach
-								} // fin else
-								
-							} // end success
-						}); // end ajax
-			        } // end IF respuesta NO
-			    }) ;// end function radio
+							}// end success
+						});// end ajax
+			        }// end IF respuesta NO
+			    });// end function radio
 			    
-			    // Método que se encarga de recoger escuchas de check buttons
+			    //Método que se encarga de recoger escuchas de check buttons
 			    $('input[type=checkbox]').click(function(){
 			    	
 			    	var elementoHTML = this.tagName+'#'+this.id;
 			    	var radioButton = "radio" + this.id.substring(5);
 			    	
-			    	// Si el check de la tabla de medicamentos se activa, se habilita los radio de la misma fila
+			    	// si el check de la tabla de medicamentos se activa, se habilita los radio de la misma fila
 			    	if(this.checked){
 			    		console.log("el checkbox esta seleccionado");
 			    		$("input[name="+radioButton+"]").prop( "disabled", false );
@@ -355,55 +319,78 @@
 			    // Funcion que inserta el bloque de preguntas de maternidad en el formulario
 			    function inserccionBloqueMaternidad(json, padrejq){
 			    	
-			    	json.forEach(element => {
-			    		console.log(element);
-			    		
-			    		var elementoIdentificador = "#cajaDependeciaPregunta" + element.idpregunta;
-						//Si el elemento no existe creamos los elemento HTML de agregación
-						if ( !$(elementoIdentificador).length > 0 ) { 
-			    		
-				    		// inserto despues del elemento HTML padre
-							if(1 === element.tipo){ // tipo text
-								$(padrejq).after("<div class='campoFormulario' id='cajaDependeciaPregunta"+element.idpregunta+"'>"+element.descripcion+"<br/><input type='text' name='" + element.tipo + "_" + element.idpregunta + "'><br/></div>");
-							}
-							else if(2 === element.tipo){ // tipo radio
-								
-								var respuestas = element.descripcionResp.split("-");
-								
-								// Agrega la nueva pregunta dentro de su caja correspondiente
-								$(padrejq).after("<div class='campoFormulario' id='cajaDependeciaPregunta"+element.idpregunta+"'>"+element.descripcion+"<br/></div>");
-								
-								//encuentro la nueva pregunta para trabajar con el elementoHTML
-								var preguntaNueva= '#cajaDependeciaPregunta'+element.idpregunta;
-								
-								// Agrego las respuestas
-								for (var respuesta in respuestas) {
-								   $(preguntaNueva).append("<input type='radio' name='" + element.tipo + "_" + element.idpregunta + " value='"+respuesta+"'>"+respuestas[respuesta]);
-								}
-								
-							}
-							else if(3 === element.tipo){ // tipo check
-								console.log("inserto check");
-								var respuestas = element.descripcionResp.split("-");
-								
-								// Agrega la nueva pregunta dentro de su caja correspondiente
-								$(padrejq).after("<div class='campoFormulario' id='cajaDependeciaPregunta"+element.idpregunta+"'>"+element.descripcion+"<br/></div>");
-								
-								//encuentro la nueva pregunta para trabajar con el elementoHTML
-								var preguntaNueva= '#cajaDependeciaPregunta'+element.idpregunta;
-								
-								// Agrego las respuestas
-								for (var respuesta in respuestas) {
-								   $(preguntaNueva).append("<input type='checkbox' name='" + element.tipo + "_" + element.idpregunta + " value='"+respuesta+"'>"+respuestas[respuesta]);
-								}
-							}
-							else{
-								console.log("Es imposible llegar aqui sin hackear la pagina o no se ha traido informado element correctamente porque el element del codigo venia vacio");
-							}
-						}
-			    	}); // fin bucle forEach
+			    	//listaPreguntas = JSON.parse(json);
 			    	
-			    } // fin metodo inserccion bloque maternidad
+			    	console.log("prueba de recorrer el arrayListJs")
+			    	
+			    	JSON.forEach(element => { element });
+			    	
+			    	
+			    	
+// 			    	for (var pregunta in json) {
+// 			    		console.log(pregunta);
+// 			    		let k = JSON.parse(pregunta);
+// 			    		console.log(k);
+// 			    	}
+			    	
+// 			    	for(let i = 0; i < JSON.length; i++){
+			    		
+// 			    		console.log("ciclo"+i);
+// 			    		console.log(JSON[i]);
+// 			    	}
+			    	
+// 			    	JSON.forEach(function(element) {
+// 			    		  console.log(element);
+// 		    		});
+			    	console.log("FIN prueba de recorrer el arrayListJs")
+			    	
+			    	
+			    	
+			    	// inserto despues del elemento HTML padre
+					if(1 === json.tipo){ // tipo text
+						$(padrejq).after("<div class='campoFormulario' id='cajaDependeciaPregunta"+json.idpregunta+"'>"+json.descripcion+"<br/><input type='text' name='" + json.tipo + "_" + json.id + "'><br/></div>");
+					}
+					else if(2 === json.tipo){ // tipo radio
+						
+						var respuestas = json.descripcionRespuestas.split("-");
+						
+//							for (var respuesta in respuestas) {
+//							    console.log(respuestas[respuesta]);
+//							}
+						
+						// Agrega la nueva pregunta dentro de su caja correspondiente
+						$(padrejq).after("<div class='campoFormulario' id='cajaDependeciaPregunta"+json.idpregunta+"'>"+json.descripcion+"<br/></div>");
+						
+						//encuentro la nueva pregunta para trabajar con el elementoHTML
+						var preguntaNueva= '#cajaDependeciaPregunta'+json.idpregunta;
+						
+						// Agrego las respuestas
+						for (var respuesta in respuestas) {
+						   $(preguntaNueva).append("<input type='radio' name='" + json.tipo + "_" + json.idpregunta + " value='"+respuesta+"'>"+respuestas[respuesta]);
+						}
+						
+					}
+					else if(3 === json.tipo){ // tipo check
+						console.log("inserto check");
+						var respuestas = json.descripcionRespuestas.split("-");
+						
+						// Agrega la nueva pregunta dentro de su caja correspondiente
+						$(padrejq).after("<div class='campoFormulario' id='cajaDependeciaPregunta"+json.idpregunta+"'>"+json.descripcion+"<br/></div>");
+						
+						//encuentro la nueva pregunta para trabajar con el elementoHTML
+						var preguntaNueva= '#cajaDependeciaPregunta'+json.idpregunta;
+						
+						// Agrego las respuestas
+						for (var respuesta in respuestas) {
+						   $(preguntaNueva).append("<input type='checkbox' name='" + json.tipo + "_" + json.idpregunta + " value='"+respuesta+"'>"+respuestas[respuesta]);
+						}
+					}
+					else{
+						console.log("Es imposible llegar aqui sin hackear la pagina o no se ha traido informado json correctamente porque el json2 del codigo venia vacio");
+					}
+			    	
+			    	
+			    }
 			    
 // 			    $('#clearRadios').click(function() {
 // 			        // use attr only if you're using an older version of jQuery
@@ -412,7 +399,7 @@
 			    
 			    
 			    
-			}); //end method
+			});// end method
 		
 		</script>
 				

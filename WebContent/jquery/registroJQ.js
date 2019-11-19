@@ -31,7 +31,7 @@ $("#selectPais").change(
 $("#selectcomunidades").change(
 		function() {
 			var valueSeleccionado = $("#selectcomunidades").val();
-			alert("valueSeleccionado: " + valueSeleccionado);
+//			alert("valueSeleccionado: " + valueSeleccionado);
 			// se lo mandamos al servlet para que nos de una respuesta:
 			$.ajax({
 				dataType : "json",
@@ -56,4 +56,3 @@ $("#selectcomunidades").change(
 			});// end ajax
 		}// end function
 );// end change
-

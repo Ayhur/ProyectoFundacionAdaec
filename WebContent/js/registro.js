@@ -1,4 +1,14 @@
 
+document.getElementById("aceptar_terminos").addEventListener('change', checkAccepted);
+
+function checkAccepted(event) {
+	console.log("estoy en el javascript checkaccepted");
+	var btnEnviar = document.getElementById("btnEnviar");
+	console.log(this.checked);
+	var isNotChecked = !this.checked;
+	btnEnviar.disabled = isNotChecked;
+
+}
 
 function mostrarComunidad (){
 	
