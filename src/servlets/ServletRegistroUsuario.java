@@ -32,6 +32,7 @@ public class ServletRegistroUsuario extends HttpServlet {
 		String usuario = request.getParameter("campoUsuario");
 		String password = request.getParameter("campoPassword");
 		String repPassword = request.getParameter("campoRepetirpassword");
+		Integer pais = Integer.parseInt(request.getParameter("selectPais"));
 		String municipio = request.getParameter("selectMunicipios");
 
 		/** TODO validaciones */
@@ -111,7 +112,7 @@ public class ServletRegistroUsuario extends HttpServlet {
 		/** Fin transformacion fecha */
 
 		Usuario usuarios = new Usuario(nombre, apellidos, dni, email, usuario, password, fechaNacimiento,
-				Integer.parseInt(municipio));
+				Integer.parseInt(municipio),pais);
 		UsuariosDAO daoUsuario = new UsuariosDAOImpl();
 		daoUsuario.registrarUsuario(usuarios);
 		System.out.println("usuario registrado con exito");

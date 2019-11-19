@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import daos.UsuariosDAO;
 import daosImpl.UsuariosDAOImpl;
+import modelos.Usuario;
 
 @WebServlet("/ServletLogin")
 public class ServletLogin extends HttpServlet {
@@ -16,32 +17,35 @@ public class ServletLogin extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		// Recabamos los campos usuario y password
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pass");
 		System.out.println(user);
-
+		
+		
+		Usuario usuarioDto = new Usuario();
+		usuarioDto.setUsuario(user);
+		usuarioDto.setPassword(pass);
+		
 		UsuariosDAO daoUsuario = new UsuariosDAOImpl();
-		int idUsuario = daoUsuario.identificarUsuario(user, pass);
-		System.out.println("idUsuario:" + idUsuario);
+		usuarioDto = daoUsuario.identificarUsuario(usuarioDto);
+		System.out.println("idUsuario:" + usuarioDto.getId());
 		
-		/**
-		 * Metodo que recoge el usuario de las tablas usuarios y administradores
-		 * sino esta en uno busca en la otra
-		 * en funcion de quien logea envia un attribute distinto para cargar
-		 * distintas paginas de endometriosis
-		 */
+		// En funcion de quien logea envia un attribute distinto para cargar distintas paginas de endometriosis
 		
-		if (idUsuario > 0) {			// usuario normal
+		if (usuarioDto.getId() > 0) {			// usuario normal
 
-			request.getSession().setAttribute("idUser", idUsuario);
+			//request.getSession().setAttribute("idUser", usuarioDto.getId());
+			request.getSession().setAttribute("user", usuarioDto);
 			request.getRequestDispatcher("endometriosis.jsp").forward(request, response);
 
-		} else if (idUsuario == 0) {	// administrador
+		} else if (usuarioDto.getId() == 0) {	// administrador
 
-			request.getSession().setAttribute("idUserAdmin", idUsuario);
+			request.getSession().setAttribute("idUserAdmin", usuarioDto.getId());
 			request.getRequestDispatcher("endometriosis.jsp").forward(request, response);
 
-		} else if (idUsuario == -1) {	// fallo en el login
+		} else if (usuarioDto.getId() == -1) {	// fallo en el login
 			//validacion login carlos
 			request.setAttribute("mensajelogin", "email y/o pass incorrectos");
 			request.getRequestDispatcher("login.jsp").forward(request, response);

@@ -1,4 +1,4 @@
- 	package servletsAdmin;
+package servletsAdmin;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,16 +11,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import daos.PreguntasDAO;
+import daosImpl.InformacionAdicionalDAOImpl;
 import daosImpl.PreguntasDAOImpl;
 import modelos.Preguntas;
 
-@WebServlet("/ServletCargaDeDatosPreviaParaBusquedaPregunta")
-public class ServletCargaDeDatosPreviaParaBusquedaPregunta extends HttpServlet {
+/**
+ * Servlet implementation class ServletCargaDatosPreviaRegistrarPreguntaRespuesta
+ */
+@WebServlet("/ServletCargaDatosPreviaRegistrarPreguntaRespuesta")
+public class ServletCargaDatosPreviaRegistrarPreguntaRespuesta extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ServletCargaDatosPreviaRegistrarPreguntaRespuesta() {
+        super();
+    }
 
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	/**
+	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		// Llamamos a PreguntasDAO para traer de BBDD todas las preguntas del formulario 
 		// y cargarlos para la dependencia de creación de nuevas preguntas
 		PreguntasDAO preguntasDAO = new PreguntasDAOImpl();
@@ -34,9 +47,13 @@ public class ServletCargaDeDatosPreviaParaBusquedaPregunta extends HttpServlet {
 			pregunta.setDescripcion(cadenaTemporal);
 			preguntaAcotadas.add(pregunta);
 		}
-		request.setAttribute("preguntas", preguntaAcotadas);
-		request.getRequestDispatcher("estadisticasInfo.jsp").forward(request, response);
-
+		
+		List<String> bloquePreguntas = new ArrayList<String>();
+		bloquePreguntas = new InformacionAdicionalDAOImpl().listarBloquePreguntas();
+		
+        request.setAttribute("preguntas", preguntaAcotadas);
+        request.setAttribute("bloquePreguntas", bloquePreguntas);
+        request.getRequestDispatcher("registrarPreguntaRespuesta.jsp").forward(request, response);
 	}
 
 }

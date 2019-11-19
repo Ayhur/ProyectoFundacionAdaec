@@ -25,7 +25,8 @@ public class ServletEditarPreguntas extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//Recojo el id de la pregunta escogida en el desplegable
-		String idpregunta = request.getParameter("idpregunta");
+//		String idpregunta = request.getParameter("idpregunta");
+		String idpregunta = request.getParameter("selectPregunta");
 		System.out.println("Ha escogido la pregunta: " + idpregunta);
 	
 		//Creo el objeto para utilizar las implementaciones

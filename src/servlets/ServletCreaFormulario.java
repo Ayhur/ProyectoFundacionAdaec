@@ -8,8 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import daos.MedicamentosDAO;
 import daos.PreguntasDAO;
 import daos.RespuestaspreguntasDAO;
+import daosImpl.MedicamentosDAOImpl;
 import daosImpl.PreguntasDAOImpl;
 import daosImpl.RespuestaspreguntasDAOImpl;
 
@@ -21,10 +23,12 @@ public class ServletCreaFormulario extends HttpServlet {
 		
 		PreguntasDAO preguntasDAO = new PreguntasDAOImpl();
 		RespuestaspreguntasDAO respuestasPreguntasDAO = new RespuestaspreguntasDAOImpl();
+		MedicamentosDAO medicamentosDAO = new MedicamentosDAOImpl();
 		
 		//Obtengo las preguntas
 		request.setAttribute("preguntas", preguntasDAO.obtenerPreguntas());
 		request.setAttribute("respuestas", respuestasPreguntasDAO.obtenerRespuestaspreguntas());
+		request.setAttribute("medicamentos", medicamentosDAO.listarMedicamentos());
 		
 		request.getRequestDispatcher("formulario.jsp").forward(request, response);
 	}
